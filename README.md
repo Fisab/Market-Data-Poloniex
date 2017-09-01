@@ -34,3 +34,4 @@ Date,Time,Open,High,Low,Close,Volume
 01/09/2017,1445,0.080273,0.080320,0.080273,0.080320,727255
 01/09/2017,1450,0.080193,0.080320,0.080193,0.080320,75002
 ```
+If volume in chart data = 0 -> this prediction with ticker.
