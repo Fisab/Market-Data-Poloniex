@@ -1,7 +1,7 @@
 # Downoloader market data from poloniex via api
 This script download market data from poloniex. 
 If last chart has not appeared it take from ticker approximate value. 
-At first start if in data no files with name for this pair and interval script will download from first date.
+At first start if in data no files with name for this pair and interval script will download from first date. Else this download data from last date in file.
 
 ## Config example:
 ```
