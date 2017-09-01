@@ -55,7 +55,6 @@ def read_conf():
 def get_last_date(file_name):
 	f = open(file_name, 'r')
 	lines = f.readlines()
-	#print(len(lines))
 	last_line = lines[-1]
 	ind = [i for i, x in enumerate(last_line) if x == ',']
 	last_line = last_line[0:ind[1]]
@@ -101,8 +100,6 @@ def get_last_line(file_name):
 	file = open(file_name, 'r')
 	data = file.readlines()
 	if len(data) > 0:
-		#print(repr(data[-1]))
-		#print(data[-1] == ' ', 'asdf')
 		return data[-1]
 
 def check_is_ticker(data):
@@ -156,8 +153,6 @@ def main():
 						delete_last_line(data['file_path'] + name)
 					write_to_file(data['file_path'] + name, res, True)
 					continue
-				#print(repr(res))
-				#write_to_file(data['file_path'] + name, res, True)
 
 				#check if need ticker
 				file_name = 'ticker_' + data['pair'] + '_' + data['interval'] + '.json'
@@ -175,9 +170,6 @@ def main():
 							break
 					if new_chart == '':
 						continue
-					#print(322, last_date + int(data['interval']), new_chart['timestamp'])
-					#print(last_date + int(data['interval']), new_chart['timestamp'])
-					#print(last_date + int(data['interval']) == new_chart['timestamp'], tools.get_cur_time() > new_chart['timestamp'])
 					if last_date + int(data['interval']) == new_chart['timestamp'] and tools.get_cur_time() > new_chart['timestamp']:
 						print('set ticker')
 						#format data
@@ -187,13 +179,10 @@ def main():
 								res += ',' + new_chart[g]
 							else:
 								res += ',0'
-				#print(new_chart['timestamp'], last_date)
-				#print(tools.to_normal_time(new_chart['timestamp']), tools.to_normal_time(last_date))
 				if is_ticker:
 					delete_last_line(data['file_path'] + name)
 				if res != '':
 					write_to_file(data['file_path'] + name, res, True)
-		#print(int(time.time())-a)
 		time.sleep(2)
 
 
@@ -202,7 +191,6 @@ if __name__ == '__main__':
 	t1 = threading.Thread(target=ticker.main)
 	t1.start()
 	while True:
-		#print('update', int(time.time()))
 		main()
 		print('sleep', tools.to_normal_time(int(time.time())))
 		time.sleep(10)

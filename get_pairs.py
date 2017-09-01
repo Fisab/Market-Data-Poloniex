@@ -1,6 +1,8 @@
 import requests
 import json
 
+#insert into config.csv all pairs with all intervals
+
 url = 'https://poloniex.com/public?command=returnTicker'
 
 need_intervals = [300, 900, 1800, 7200, 86400]

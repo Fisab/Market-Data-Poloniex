@@ -52,8 +52,6 @@ def main():
 		ticker = tools.get_ticker()
 		for i in tickIntervals.keys():
 			for j in ticker.keys():
-				#if j != 'BTC_DASH' or i != '300':
-				#	continue
 				file_name = 'ticker_' + j + '_' + str(i) + '.json'
 				exist = tools.check_exist(path + file_name)
 
@@ -62,7 +60,6 @@ def main():
 					data = get_last_candle(all_data)
 
 					new_timestamp = check_timestamp(data['timestamp'], int(i))
-					#print(data['timestamp'], new_timestamp)
 
 					if new_timestamp == False:
 						rewrite = False
@@ -78,7 +75,6 @@ def main():
 									all_data[o] = data
 									break
 
-							#print('rewrite', data['timestamp'])
 							write_to_file(file_name, all_data)
 					elif data['timestamp'] != 0:
 						l = '{0:f}'.format(float(ticker[j]['last']))
@@ -87,10 +83,8 @@ def main():
 						result.append(res)
 						res = {'timestamp': new_timestamp, 'open': l, 'high': l, 'low': l, 'close': l}
 						result.append(res)
-						#print('new_timestamp', len(result))
 						write_to_file(file_name, result)
-				if int(i) == 0:
-					print(tickIntervals, i)
+
 				if not exist and cur_time % int(i) < 20:#need create new file
 					cur_time -= cur_time % int(i)
 					l = '{0:f}'.format(float(ticker[j]['last']))
