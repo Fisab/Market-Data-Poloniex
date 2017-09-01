@@ -1,0 +1,2 @@
+Pair,interval,type,path
+BTC_DASH,300,open_high_low_close_volume,./data/
